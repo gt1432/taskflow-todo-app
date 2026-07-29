@@ -1,0 +1,5 @@
+# Git ignore for TaskFlow
+.DS_Store
+Thumbs.db
+*.log
+node_modules/

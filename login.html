@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in or create an account to access TaskFlow — your modern to-do list app." />
+  <title>TaskFlow — Sign In</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <!-- ── Animated background orbs ── -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ── Toast ── -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ── Main auth card ── -->
+  <main class="auth-wrapper" role="main">
+
+    <!-- Logo / Brand -->
+    <div class="auth-brand">
+      <div class="brand-logo" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="12" fill="url(#brandGrad)"/>
+          <path d="M11 20l6 6 12-12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#7C3AED"/>
+              <stop offset="1" stop-color="#4F46E5"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="brand-name">TaskFlow</h1>
+      <p class="brand-tagline">Organize your day, your way.</p>
+    </div>
+
+    <!-- Auth Card -->
+    <div class="auth-card glass-card" id="auth-card">
+
+      <!-- Tab switcher -->
+      <div class="auth-tabs" role="tablist" aria-label="Sign in or create account">
+        <button
+          class="auth-tab active"
+          id="tab-signin"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-signin"
+          data-tab="signin"
+        >Sign In</button>
+        <button
+          class="auth-tab"
+          id="tab-signup"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-signup"
+          data-tab="signup"
+        >Sign Up</button>
+        <span class="auth-tab-indicator" id="tab-indicator"></span>
+      </div>
+
+      <!-- ─── SIGN IN PANEL ─── -->
+      <div class="auth-panel" id="panel-signin" role="tabpanel" aria-labelledby="tab-signin">
+        <form id="signin-form" class="auth-form" novalidate autocomplete="on">
+          <!-- Username -->
+          <div class="field-group">
+            <label class="field-label" for="signin-username">Username</label>
+            <div class="field-wrap" id="signin-username-wrap">
+              <span class="field-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <input
+                type="text"
+                id="signin-username"
+                class="field-input"
+                placeholder="Enter your username"
+                autocomplete="username"
+                aria-required="true"
+                aria-describedby="signin-username-error"
+                maxlength="32"
+              />
+            </div>
+            <span class="field-error" id="signin-username-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="field-group">
+            <label class="field-label" for="signin-password">Password</label>
+            <div class="field-wrap" id="signin-password-wrap">
+              <span class="field-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input
+                type="password"
+                id="signin-password"
+                class="field-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                aria-required="true"
+                aria-describedby="signin-password-error"
+                maxlength="64"
+              />
+              <button type="button" class="toggle-pw-btn" data-target="signin-password" aria-label="Show password" title="Toggle password visibility">
+                <svg class="eye-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+            <span class="field-error" id="signin-password-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Remember me + Forgot -->
+          <div class="form-row-inline">
+            <label class="checkbox-label">
+              <input type="checkbox" id="remember-me" class="custom-checkbox" />
+              <span class="checkbox-visual"></span>
+              Remember me
+            </label>
+            <button type="button" class="link-btn" id="forgot-pw-btn">Forgot password?</button>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-auth" id="signin-btn">
+            <span class="btn-auth-text">Sign In</span>
+            <span class="btn-auth-spinner spinner" aria-hidden="true" hidden></span>
+            <svg class="btn-auth-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <!-- Divider -->
+          <div class="divider"><span>or continue with</span></div>
+
+          <!-- Demo account shortcut -->
+          <button type="button" class="btn-demo" id="demo-login-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Try Demo Account
+          </button>
+        </form>
+      </div><!-- /panel-signin -->
+
+      <!-- ─── SIGN UP PANEL ─── -->
+      <div class="auth-panel hidden" id="panel-signup" role="tabpanel" aria-labelledby="tab-signup">
+        <form id="signup-form" class="auth-form" novalidate autocomplete="on">
+
+          <!-- Full Name -->
+          <div class="field-group">
+            <label class="field-label" for="signup-name">Full Name</label>
+            <div class="field-wrap" id="signup-name-wrap">
+              <span class="field-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <input
+                type="text"
+                id="signup-name"
+                class="field-input"
+                placeholder="Your full name"
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="signup-name-error"
+                maxlength="64"
+              />
+            </div>
+            <span class="field-error" id="signup-name-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Username -->
+          <div class="field-group">
+            <label class="field-label" for="signup-username">Username</label>
+            <div class="field-wrap" id="signup-username-wrap">
+              <span class="field-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg>
+              </span>
+              <input
+                type="text"
+                id="signup-username"
+                class="field-input"
+                placeholder="Choose a username"
+                autocomplete="username"
+                aria-required="true"
+                aria-describedby="signup-username-error"
+                maxlength="32"
+              />
+            </div>
+            <span class="field-error" id="signup-username-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="field-group">
+            <label class="field-label" for="signup-password">Password</label>
+            <div class="field-wrap" id="signup-password-wrap">
+              <span class="field-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input
+                type="password"
+                id="signup-password"
+                class="field-input"
+                placeholder="Create a strong password"
+                autocomplete="new-password"
+                aria-required="true"
+                aria-describedby="signup-password-hint signup-password-error"
+                maxlength="64"
+              />
+              <button type="button" class="toggle-pw-btn" data-target="signup-password" aria-label="Show password" title="Toggle password visibility">
+                <svg class="eye-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+            <!-- Password strength bar -->
+            <div class="pw-strength-bar" id="pw-strength-bar" aria-hidden="true">
+              <div class="pw-strength-fill" id="pw-strength-fill"></div>
+            </div>
+            <span class="pw-strength-label" id="pw-strength-label" aria-live="polite"></span>
+            <span class="field-error" id="signup-password-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field-group">
+            <label class="field-label" for="signup-confirm">Confirm Password</label>
+            <div class="field-wrap" id="signup-confirm-wrap">
+              <span class="field-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <input
+                type="password"
+                id="signup-confirm"
+                class="field-input"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                aria-required="true"
+                aria-describedby="signup-confirm-error"
+                maxlength="64"
+              />
+            </div>
+            <span class="field-error" id="signup-confirm-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Terms -->
+          <label class="checkbox-label" for="accept-terms">
+            <input type="checkbox" id="accept-terms" class="custom-checkbox" aria-required="true" />
+            <span class="checkbox-visual"></span>
+            I agree to the <button type="button" class="link-btn">Terms of Service</button>
+          </label>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-auth" id="signup-btn">
+            <span class="btn-auth-text">Create Account</span>
+            <span class="btn-auth-spinner spinner" aria-hidden="true" hidden></span>
+            <svg class="btn-auth-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+      </div><!-- /panel-signup -->
+
+    </div><!-- /auth-card -->
+
+    <!-- Footer note -->
+    <p class="auth-footer-note">
+      Passwords are stored locally in your browser. This is a demo app.
+    </p>
+
+  </main>
+
+  <!-- Theme toggle (floating) -->
+  <button id="theme-toggle-btn" class="theme-float-btn" aria-label="Toggle dark/light mode" title="Toggle theme (Ctrl+D)">
+    <svg id="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg id="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
+  <script src="login.js"></script>
+</body>
+</html>
