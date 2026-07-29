@@ -659,15 +659,43 @@ ul { list-style: none; }
     gap: 0;
   }
 
-  /* Left panel — hero / branding image */
+  /* Left panel — hero moving background image */
   .auth-wrapper::before {
     content: '';
     display: block;
     flex: 1;
-    background:
-      linear-gradient(160deg, rgba(15,12,41,0.35) 0%, rgba(124,58,237,0.25) 50%, rgba(15,12,41,0.55) 100%),
-      url('assets/login-bg.png') center center / cover no-repeat;
+    background: rgba(15,12,41,0.5);
     border-right: 1px solid var(--border);
+  }
+
+  .hero-bg-container {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: url('assets/login-bg.png') center center / cover no-repeat;
+    animation: panAndZoomBg 22s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+    will-change: transform;
+    filter: brightness(0.95) contrast(1.05);
+  }
+
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(15,12,41,0.30) 0%, rgba(124,58,237,0.20) 50%, rgba(15,12,41,0.55) 100%);
   }
 
   /* Brand on the left */
@@ -727,6 +755,21 @@ ul { list-style: none; }
 @keyframes slideFromRight {
   from { opacity: 0; transform: translateX(30px); }
   to   { opacity: 1; transform: none; }
+}
+
+@keyframes panAndZoomBg {
+  0% {
+    transform: scale(1) translate(0%, 0%) rotate(0deg);
+  }
+  33% {
+    transform: scale(1.10) translate(-3%, -2%) rotate(0.6deg);
+  }
+  66% {
+    transform: scale(1.15) translate(2%, -4%) rotate(-0.4deg);
+  }
+  100% {
+    transform: scale(1.05) translate(-1%, 3%) rotate(0.2deg);
+  }
 }
 
 /* ── Large desktop (≥ 1440px) ── */
