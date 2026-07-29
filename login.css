@@ -659,14 +659,14 @@ ul { list-style: none; }
     gap: 0;
   }
 
-  /* Left panel — hero / branding */
+  /* Left panel — hero / branding image */
   .auth-wrapper::before {
     content: '';
     display: block;
     flex: 1;
     background:
-      linear-gradient(160deg, rgba(124,58,237,0.55) 0%, rgba(79,70,229,0.40) 60%, transparent 100%),
-      linear-gradient(135deg, var(--bg-start), var(--bg-mid));
+      linear-gradient(160deg, rgba(15,12,41,0.35) 0%, rgba(124,58,237,0.25) 50%, rgba(15,12,41,0.55) 100%),
+      url('assets/login-bg.png') center center / cover no-repeat;
     border-right: 1px solid var(--border);
   }
 
@@ -721,13 +721,7 @@ ul { list-style: none; }
     gap: 28px;
   }
 
-  .auth-footer-note {
-    position: fixed;
-    bottom: 20px;
-    right: 0;
-    width: 50%;
-    text-align: center;
-  }
+
 }
 
 @keyframes slideFromRight {
