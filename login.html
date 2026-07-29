@@ -25,33 +25,40 @@
   <!-- ── Toast ── -->
   <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- ── Main auth card ── -->
+  <!-- ── Main auth wrapper ── -->
   <main class="auth-wrapper" role="main">
-    <div class="hero-bg-container" aria-hidden="true">
-      <div class="hero-bg-image"></div>
-      <div class="hero-bg-overlay"></div>
-    </div>
 
-    <!-- Logo / Brand -->
-    <div class="auth-brand">
-      <div class="brand-logo" aria-hidden="true">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="12" fill="url(#brandGrad)"/>
-          <path d="M11 20l6 6 12-12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs>
-            <linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#7C3AED"/>
-              <stop offset="1" stop-color="#4F46E5"/>
-            </linearGradient>
-          </defs>
-        </svg>
+    <!-- Left Hero Panel (moving background + branding) -->
+    <div class="auth-hero-panel">
+      <div class="hero-bg-container" aria-hidden="true">
+        <div class="hero-bg-image"></div>
+        <div class="hero-bg-overlay"></div>
       </div>
-      <h1 class="brand-name">TaskFlow</h1>
-      <p class="brand-tagline">Organize your day, your way.</p>
+
+      <div class="auth-brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="12" fill="url(#brandGrad)"/>
+            <path d="M11 20l6 6 12-12" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7C3AED"/>
+                <stop offset="1" stop-color="#4F46E5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h1 class="brand-name">TaskFlow</h1>
+        <p class="brand-tagline">Organize your day, your way.</p>
+      </div>
     </div>
 
     <!-- Auth Card -->
     <div class="auth-card glass-card" id="auth-card">
+      <div class="card-brand-header">
+        <h2 class="card-brand-title">TaskFlow</h2>
+        <p class="card-brand-sub">Welcome back! Please enter your details.</p>
+      </div>
 
       <!-- Tab switcher -->
       <div class="auth-tabs" role="tablist" aria-label="Sign in or create account">

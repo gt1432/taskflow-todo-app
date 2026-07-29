@@ -537,8 +537,8 @@ function init() {
   signupForm.addEventListener('submit', handleSignUp);
 
   // Extras
-  demoLoginBtn.addEventListener('click', handleDemoLogin);
-  forgotPwBtn.addEventListener('click', handleForgotPassword);
+  if (demoLoginBtn) demoLoginBtn.addEventListener('click', handleDemoLogin);
+  if (forgotPwBtn) forgotPwBtn.addEventListener('click', handleForgotPassword);
   themeToggleBtn.addEventListener('click', toggleTheme);
 
   // Password toggles

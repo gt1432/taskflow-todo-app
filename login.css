@@ -241,6 +241,26 @@ ul { list-style: none; }
   gap: 24px;
 }
 
+.card-brand-header {
+  text-align: center;
+  margin-bottom: 2px;
+}
+.card-brand-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+.card-brand-sub {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
 /* ─── 9. TABS ─── */
 .auth-tabs {
   position: relative;
@@ -659,22 +679,24 @@ ul { list-style: none; }
     gap: 0;
   }
 
-  /* Left panel — hero moving background image */
-  .auth-wrapper::before {
-    content: '';
-    display: block;
+  /* Left Hero Panel */
+  .auth-hero-panel {
     flex: 1;
-    background: rgba(15,12,41,0.5);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
     border-right: 1px solid var(--border);
   }
 
   .hero-bg-container {
     display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100vh;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
@@ -689,28 +711,26 @@ ul { list-style: none; }
     background: url('assets/login-bg.png') center center / cover no-repeat;
     animation: panAndZoomBg 22s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
     will-change: transform;
-    filter: brightness(0.95) contrast(1.05);
+    filter: brightness(0.9) contrast(1.05);
   }
 
   .hero-bg-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(160deg, rgba(15,12,41,0.30) 0%, rgba(124,58,237,0.20) 50%, rgba(15,12,41,0.55) 100%);
+    background: linear-gradient(160deg, rgba(15,12,41,0.45) 0%, rgba(124,58,237,0.25) 50%, rgba(15,12,41,0.65) 100%);
   }
 
-  /* Brand on the left */
+  /* Brand on the left inside hero panel */
   .auth-brand {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 50%;
-    height: 100vh;
+    position: relative;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
     padding: 40px;
+    text-align: center;
     pointer-events: none;
     animation: none;
     opacity: 1;
@@ -718,24 +738,24 @@ ul { list-style: none; }
   }
   .brand-logo { width: 96px; height: 96px; border-radius: 26px; }
   .brand-logo svg { width: 54px; height: 54px; }
-  .brand-name { font-size: 3rem; }
-  .brand-tagline { font-size: 1.1rem; }
+  .brand-name { font-size: 3.2rem; letter-spacing: -0.02em; }
+  .brand-tagline { font-size: 1.15rem; color: #d8b4fe; }
 
   /* Desktop hero extra text */
   .auth-brand::after {
     content: 'Stay on top of everything that matters.';
     display: block;
     font-size: 0.95rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-align: center;
-    max-width: 300px;
+    max-width: 320px;
     line-height: 1.7;
     margin-top: 8px;
   }
 
   /* Right panel — form */
   .auth-card {
-    flex: 0 0 50%;
+    flex: 0 0 500px;
     min-height: 100vh;
     border-radius: 0;
     max-width: 520px;
